@@ -1,7 +1,19 @@
 package randomizer
 
-import "fmt"
+import (
+	"crypto/sha256"
+	"fmt"
+	"time"
+)
 
-func HelloWorld() {
-	fmt.Println("Hello World")
+func RandomString(length int) string {
+	// Generate random string use Unix Time
+	var time = fmt.Sprintf("%d", time.Now().Unix())
+
+	sha := sha256.New()
+	sha.Write([]byte(time))
+
+	shaString := fmt.Sprintf("%x", sha.Sum(nil))
+
+	return shaString[:length]
 }
