@@ -8,7 +8,7 @@ import (
 
 func RandomString(length int) string {
 	// Generate random string use Unix Time
-	var time = fmt.Sprintf("%d", time.Now().Unix())
+	var time = fmt.Sprintf("%d", time.Now().UnixNano())
 
 	sha := sha256.New()
 	sha.Write([]byte(time))
